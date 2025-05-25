@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome To Web Platter</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #ff6b6b;
+      --secondary-color: #4ecdc4;
+      --accent-color: #ffbe76;
+      --dark-color: #2d3436;
+      --light-color: #f5f6fa;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      color: var(--dark-color);
+    }
+
+    header {
+      margin-top: 40px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: rotate(15deg);
+    }
+
+    h1 {
+      color: var(--dark-color);
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.description {
+      max-width: 600px;
+      color: #555;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    .role-section {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    .role-card {
+      background-color: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      width: 220px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-top: 4px solid transparent;
+    }
+
+    .role-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .role-card.admin:hover {
+      border-top-color: var(--primary-color);
+    }
+
+    .role-card.employee:hover {
+      border-top-color: var(--secondary-color);
+    }
+
+    .role-card.user:hover {
+      border-top-color: var(--accent-color);
+    }
+
+    .role-card i {
+      font-size: 50px;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .role-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark-color);
+    }
+
+    .role-desc {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #ff5252;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(255, 107, 107, 0.3);
+    }
+
+    .team-section {
+      background-color: rgba(255,255,255,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      width: 80%;
+      max-width: 100%;
+    }
+
+    .team-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark-color);
+      font-weight: 600;
+    }
+
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .team-member {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      width: 300px;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .member-info {
+      text-align: left;
+      margin-left: 15px;
+    }
+
+    .member-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--dark-color);
+    }
+
+    .member-id {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .member-github {
+      font-size: 0.9rem;
+    }
+
+    .member-github a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .member-github a:hover {
+      color: var(--accent-color);
+    }
+
+    .member-github i {
+      margin-right: 5px;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.7);
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--accent-color);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .role-section { gap: 20px; }
+      .role-card { width: 160px; padding: 20px 15px; }
+      .team-member { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      .role-section { flex-direction: column; align-items: center; }
+      .role-card { width: 80%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Food Mania Logo" class="logo" />
+    <h1>Welcome To WebPlatter</h1>
+    <p class="description">
+      This is a digital resturant service platform. Choose your role to get started.
+    </p>
+  </header>
+
+  <!-- Role Cards with Icons and Descriptions -->
+  <section class="role-section">
+    <div class="role-card admin">
+      <i class="fas fa-user"></i>
+      <div class="role-name">User</div>
+      <div class="role-desc">Browse menu and place your food orders.</div>
+      <a class="btn btn-primary btn-lg" href="/shop" role="button">User</a>
+    </div>
+    
+    <div class="role-card employee" onclick="window.location='/admin'">
+      <i class="fas fa-user-tie"></i>
+      <div class="role-name">Employee</div>
+      <div class="role-desc">Handle orders, menu, and customer services.</div>
+      <a class="btn btn-primary btn-lg" href="/admin" role="button">Employee</a>
+    </div>
+    
+    <div class="role-card user" onclick="window.location='/admin'">
+      <i class="fas fa-user-shield"></i>
+      <div class="role-name">Admin</div>
+      <div class="role-desc">Manage restaurant data and system users.</div>
+      <a class="btn btn-primary btn-lg" href="/admin" role="button">Admin</a>
+    </div>
+  </section>
+
+  <!-- Team Information
+<section class="team-section">
+    <h2 class="team-title">Project Team</h2>
+    <div class="team-members">
+      <div class="team-member">
+        <i class="fas fa-user-graduate" style="font-size: 2rem; color: var(--primary-color);"></i>
+        <div class="member-info">
+          <div class="member-name">PARMAR DARSHAN KIRITBHAI</div>
+          <div class="member-id">CE084</div>
+          <div class="member-github">
+            <a href="https://github.com/darshankparmar" target="_blank">
+              <i class="fab fa-github"></i> @darshankparmar
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member">
+        <i class="fas fa-user-graduate" style="font-size: 2rem; color: var(--secondary-color);"></i>
+        <div class="member-info">
+          <div class="member-name">PATEL HARSHKUMAR NAYANBHAI</div>
+          <div class="member-id">CE098</div>
+          <div class="member-github">
+            <a href="https://github.com/7Har" target="_blank">
+              <i class="fab fa-github"></i> @7Har
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <i class="fas fa-user-graduate" style="font-size: 2rem; color: var(--accent-color);"></i>
+        <div class="member-info">
+          <div class="member-name">A</div>
+          <div class="member-id">CE123</div>
+          <div class="member-github">
+            <a href="https://github.com/newmember" target="_blank">
+              <i class="fab fa-github"></i> @newmember
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <footer>
+    © 2025 WebPlatter | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+  </footer>
+
+  <script>
+    // Smooth navigation function
+
+      
+      // Add animation before navigation
+      document.body.style.opacity = '0.8';
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 300);
+    }
+    
+    // Add click event to all role cards
+    document.querySelectorAll('.role-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const role = this.classList.contains('admin') ? 'admin' : 
+                    this.classList.contains('employee') ? 'employee' : 'user';
+        navigate(role);
+      });
+    });
+  </script>
+</body>
+</html>
